@@ -1,3 +1,8 @@
+/*
+Ich habe leider bei der Ideenfindung Sinus und Cosinus aus den Augen verloren
+Durch Anpassung der globalen Variablen lassen sich aber immerhin interessante Ergebnisse erzielen, wenn man dem Programm etwas Zeit lässt.
+Falls das nicht in Ordnung ist, kann ich auch ein neues Programm Sin/Cos schreiben.
+*/
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -29,7 +34,7 @@ void setupSnakes(){
   for(int i = 0; i<random; i++){
     int startX = getRandom(0, width);
     int startY = getRandom(0, height);
-    int c = colors[getRandom(0,colors.length - 1)];
+    int c = colors[getRandom(0,colors.length)];
     this.snakes.add(new Snake(startX, startY, c, stepSize, diameter));
   }
 }
@@ -46,9 +51,16 @@ void draw() {
   }
 }
 
-void mouseClicked(){
+void mouseReleased(){
   clear();
   setupSnakes();
+}
+
+void keyReleased(){
+ if(key == 's' || key == 'B'){
+    saveFrame("frame-######.png"); 
+ }
+  
 }
 
 int getRandom(int low, int high){
@@ -57,6 +69,7 @@ int getRandom(int low, int high){
   return i;
 }
 
+//----------------------------------------------------------------------
 
 class Snake{
   int x;
